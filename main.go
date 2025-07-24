@@ -57,6 +57,10 @@ func run(ctx context.Context) error {
 		return fmt.Errorf("invalid difficulty %s, available options are 'easy', 'medium' and 'hard'", difficulty)
 	}
 
+	if gridDefinitionFile == "" {
+		return errors.New("specify a grid definition file using --grid-definition-file")
+	}
+
 	grid, err := loadGridDefinitionFromFile(gridDefinitionFile)
 	if err != nil {
 		return err
