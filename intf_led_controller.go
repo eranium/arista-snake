@@ -46,10 +46,10 @@ func (c *ShutdownCommand) GetCmd() string {
 	cmd := "shutdown"
 
 	if c.shut {
-		cmd = "no " + cmd
+		return cmd
 	}
 
-	return cmd
+	return "no " + cmd
 }
 
 type TrafficLoopBackCommand struct {
@@ -59,11 +59,11 @@ type TrafficLoopBackCommand struct {
 func (c *TrafficLoopBackCommand) GetCmd() string {
 	cmd := "traffic-loopback source system device mac"
 
-	if !c.enable {
-		cmd = "no " + cmd
+	if c.enable {
+		return cmd
 	}
 
-	return cmd
+	return "no " + cmd
 }
 
 type AristaInterfaceLEDController struct {
